@@ -5,10 +5,16 @@ CREATE TABLE "user" (
     "auth_level" INTEGER DEFAULT 0
 );
 
+CREATE TABLE "category" (
+    "id" SERIAL PRIMARY KEY,
+    "undesirable_label" VARCHAR (50) UNIQUE NOT NULL,
+    "desirable_label" VARCHAR (50) UNIQUE NOT NULL
+);
+
 CREATE TABLE "question" (
     "id" SERIAL PRIMARY KEY,
     "verbiage" VARCHAR (300) NOT NULL,
-    "category" VARCHAR (20) NOT NULL,
+    "category_id" INTEGER REFERENCES "category",
     "weight" INTEGER DEFAULT 1
 );
 
@@ -18,3 +24,4 @@ CREATE TABLE "response" (
     "question_id" INTEGER REFERENCES "question",
     "answer" INTEGER
 );
+
