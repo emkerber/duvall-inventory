@@ -3,29 +3,29 @@ const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT || 5001;
 
-// Middleware Includes
+// include middleware
 const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
 
-// Route Includes
+// include route files
 const userRouter = require('./routes/user.router');
 
-// Express Middleware
+// express setup
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('build'));
 
-// Passport Session Configuration
+// Passport session configuration
 app.use(sessionMiddleware);
 
-// Start Passport Sessions
+// start Passport sessions
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Routes
+// define route URLs
 app.use('/api/user', userRouter);
 
-// Listen Server & Port
+// define port on which to listen
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
