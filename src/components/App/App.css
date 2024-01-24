@@ -29,11 +29,11 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #000000;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
+  background-color: #0000b3;
+  color: #f2f2f2;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
@@ -55,7 +55,8 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  color: #000000;
+  background-color: #b3b3ff;
   text-decoration: none;
 }
 
