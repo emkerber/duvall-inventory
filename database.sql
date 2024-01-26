@@ -20,7 +20,14 @@ CREATE TABLE "question" (
     "id" SERIAL PRIMARY KEY,
     "verbiage" VARCHAR (1000) NOT NULL,
     "category_id" INTEGER REFERENCES "category",
-    "weight" INTEGER DEFAULT 1
+    "option_one" VARCHAR (300),
+    "option_two" VARCHAR (300),
+    "option_three" VARCHAR (300),
+    "option_four" VARCHAR (300),
+    "weight_one" INTEGER DEFAULT 1,
+    "weight_two" INTEGER DEFAULT 1,
+    "weight_three" INTEGER DEFAULT 1,
+    "weight_four" INTEGER DEFAULT 1
 );
 
 CREATE TABLE "response" (
