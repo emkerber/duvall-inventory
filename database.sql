@@ -1,7 +1,7 @@
--- DROP TABLE "response";
--- DROP TABLE "question";
--- DROP TABLE "category";
--- DROP TABLE "user";
+DROP TABLE "response";
+DROP TABLE "question";
+DROP TABLE "category";
+DROP TABLE "user";
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
@@ -43,3 +43,22 @@ VALUES
     ('Parasitic', 'Accountable'),
     ('Basic', 'Authentic'),
     ('Inflexible', 'Good-humored');
+
+INSERT INTO "question" 
+    (
+        "verbiage", "category_id", 
+        "option_one", "option_two", "option_three", "option_four"
+    )
+VALUES
+    (
+        'Which color?', 1,
+        'Blue', 'Green', 'Pink', 'Teal'
+    ),
+    (
+        'How tall?', 2,
+        'One foot', 'Six geese', 'A league', 'Eight'
+    ),
+    (
+        'Is a hotdog a sandwich?', 4,
+        'Definitely', 'Nope', 'Tis a taco', 'Refuse to respond'
+    );
