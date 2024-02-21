@@ -37,6 +37,14 @@ CREATE TABLE "response" (
     "answer" INTEGER
 );
 
+CREATE TABLE "result" (
+    "id" SERIAL PRIMARY KEY,
+    "user_id" INTEGER REFERENCES "user",
+    "category_id" INTEGER REFERENCES "category",
+    "score" DECIMAL (3, 2)
+);
+
+-- the four scales
 INSERT INTO "category" ("undesirable", "desirable")
 VALUES 
     ('Cruel', 'Benevolent'),
@@ -44,6 +52,7 @@ VALUES
     ('Basic', 'Authentic'),
     ('Inflexible', 'Good-humored');
 
+-- sample data
 INSERT INTO "question" 
     (
         "verbiage", "category_id", 
@@ -60,5 +69,5 @@ VALUES
     ),
     (
         'Is a hotdog a sandwich?', 4,
-        'Definitely', 'Nope', 'Tis a taco', 'Refuse to respond'
+        'Definitely', 'Nope', '''Tis a taco', 'Refuse to respond'
     );
