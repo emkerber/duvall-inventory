@@ -9,36 +9,56 @@ function Nav() {
 
   return (
     <div className="nav">
+
+      {/* clickable nav title text */}
       <Link to="/home">
         <h2 className="nav-title">The Duvall Inventory</h2>
       </Link>
+
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
-          // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
+          <>
+            <Link className="navLink" to="/login">
+              Login / Register
+            </Link>
+          </>
         )}
 
-        {/* If a user is logged in, show these links */}
-        {user.id && (
+        {/* If an admin user is logged in, show these links */}
+        {user.auth_level === 1 && (
           <>
-            <Link className="navLink" to="/user">
+            <Link className="navLink" to="/admin/all">
+              All Questions
+            </Link>
+
+            <Link className="navLink" to="/admin/new">
+              New Question
+            </Link>
+          </>
+        )}
+
+        {/* If a basic user is logged in, show these links */}
+        {user.auth_level === 0 && (
+          <>
+            <Link className="navLink" to="/home">
               Home
             </Link>
+          </>
+        )}
 
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
+        {/* Everyone can see About */}
+        <Link className="navLink" to="/about">
+          About
+        </Link>
 
+        {/* If any user is logged in, show these links */}
+        {user.id && (
+          <>
             <LogOutButton className="navLink" />
           </>
         )}
 
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );
