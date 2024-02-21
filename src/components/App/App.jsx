@@ -12,6 +12,7 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ProtectedAdminRoute from '../ProtectedRoute/ProtectedAdminRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
@@ -19,6 +20,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import AllQuestionsPage from '../Admin/AllQuestionsPage/AllQuestionsPage';
 
 import './App.css';
 
@@ -67,6 +69,14 @@ function App() {
           >
             <InfoPage />
           </ProtectedRoute>
+
+          {/* Admin routes */}
+          <ProtectedAdminRoute
+            exact
+            path="/admin/all"
+          >
+            <AllQuestionsPage />
+          </ProtectedAdminRoute>
 
           <Route
             exact
