@@ -71,3 +71,22 @@ VALUES
         'Is a hotdog a sandwich?', 4,
         'Definitely', 'Nope', '''Tis a taco', 'Refuse to respond'
     );
+
+INSERT INTO "question" 
+    (
+        "verbiage", "category_id", 
+        "option_one", "option_two", "option_three", "option_four"
+    )
+VALUES
+    (
+        'cruel or benevolent?', 1, 'cruel', 'benevolent', 'medium', 'none'
+    ),
+    (
+        'parasitic or accountable?', 2, 'parasitic', 'accountable', 'somewhat', 'neither'
+    ),
+    (
+        'basic or authentic?', 3, 'basic', 'authentic', 'attention seekerrr', 'The Facebook'
+    ),
+    (
+        'inflexible or good-humored?', 4, 'inflexible', 'good humored', 'great humored', 'stinker'
+    );
