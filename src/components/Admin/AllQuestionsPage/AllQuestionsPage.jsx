@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 function AllQuestionsPage() {
     const dispatch = useDispatch();
 
-    // const categories = useSelector(store => store.category);
+    const categories = useSelector(store => store.category.categories);
 
-    // const questionsCatOne = useSelector(store => store.question.catOne);
-    // const questionsCatTwo = useSelector(store => store.question.catTwo);
-    // const questionsCatThree = useSelector(store => store.question.catThree);
-    // const questionsCatFour = useSelector(store => store.question.catFour);
+    const questions = useSelector(store => store.question.questionsByCategory);
+
+    console.log('categories:', categories);
+    console.log('questions:', questions);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_CATEGORIES' });

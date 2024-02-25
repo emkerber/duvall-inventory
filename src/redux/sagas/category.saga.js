@@ -3,11 +3,11 @@ import axios from 'axios';
 
 function* fetchCategories(action) {
     try {
-        console.log('TODO fetch categories');
-
         // axios call
+        const categories = yield axios.get('/api/category');
 
         // save to reducer
+        yield put({ type: 'SET_CATEGORIES', payload: categories.data });
         
     } catch (error) {
         console.log('Error fetching categories:', error);

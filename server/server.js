@@ -9,6 +9,7 @@ const passport = require('./strategies/user.strategy');
 
 // include route files
 const userRouter = require('./routes/user.router');
+const categoryRouter = require('./routes/category.router');
 
 // express setup
 app.use(express.json());
@@ -24,6 +25,7 @@ app.use(passport.session());
 
 // define route URLs
 app.use('/api/user', userRouter);
+app.use('/api/category', categoryRouter);
 
 // define port on which to listen
 app.listen(PORT, () => {

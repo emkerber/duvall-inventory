@@ -13,12 +13,14 @@
 - [ ] view is only accessible by admins
 
 ### Admin view of all existing questions
-- [ ] on load, dispatch to saga to HTTP GET all existing questions
+- [x] on load, dispatch to saga to HTTP GET all categories
+- [x] server returns all categories
+- [ ] render all categories
+- [ ] on load, dispatch to saga to HTTP GET all existing questions, by category
 - [ ] server returns results organized by category
-- [ ] render all existing questions with their potential responses and associated weights
-    - [ ] questions are grouped by category, under headers for each category
-- [ ] Nav bar link for admins
-- [ ] view is only accessible by admins
+- [ ] render all existing questions with their potential responses, grouped by category
+- [x] Nav bar link for admins
+- [x] view is only accessible by admins
 
 ### Admin can update and delete an existing question
 - [ ] clicking on a question from the list of all existing questions brings admin user to view with prepopulated form
