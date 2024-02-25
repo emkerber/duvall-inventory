@@ -1,22 +1,22 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* fetchQuestionsByCategory(action) {
+function* fetchQuestions(action) {
     try {
-        console.log('TODO fetch questions by category');
-
         // axios call
+        const questions = yield axios.get('/api/question');
 
         // save to reducer
-        
+        yield put({ type: 'SET_QUESTIONS', payload: questions.data });
+
     } catch (error) {
-        console.log('Error fetching questions by category:', error);
+        console.log('Error fetching questions:', error);
     }
 }
 
 function* questionSaga() {
     // Admin:
-    yield takeLatest('FETCH_QUESTIONS_BY_CATEGORY', fetchQuestionsByCategory);
+    yield takeLatest('FETCH_QUESTIONS', fetchQuestions);
 }
 
 export default questionSaga;

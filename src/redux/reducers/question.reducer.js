@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-const questionsByCategory = (state = {}, action) => {
+const questions = (state = [], action) => {
     switch (action.type) {
-        case 'SET_QUESTIONS_BY_CATEGORY':
+        case 'SET_QUESTIONS':
             return action.payload;
-        case 'UNSET_QUESTIONS_BY_CATEGORY':
-            return {};
+        case 'UNSET_QUESTIONS':
+            return [];
         default:
             return state;
     }
@@ -13,5 +13,5 @@ const questionsByCategory = (state = {}, action) => {
 
 export default combineReducers({
     // admin:
-    questionsByCategory,
+    questions,
 });

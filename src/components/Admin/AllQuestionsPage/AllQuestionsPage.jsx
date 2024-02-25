@@ -1,28 +1,36 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import QuestionsByCategory from './QuestionsByCategory';
+import './AllQuestionsPage.css';
 
 function AllQuestionsPage() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const categories = useSelector(store => store.category.categories);
+  const categories = useSelector(store => store.category.categories);
 
-    const questions = useSelector(store => store.question.questionsByCategory);
+  useEffect(() => {
+    dispatch({ type: 'FETCH_CATEGORIES' });
+    dispatch({ type: 'FETCH_QUESTIONS' });
+  }, []);
 
-    console.log('categories:', categories);
-    console.log('questions:', questions);
+  return (
+    <>
+      <h1>All Questions</h1>
 
-    useEffect(() => {
-        dispatch({ type: 'FETCH_CATEGORIES' });
-        dispatch({ type: 'FETCH_QUESTIONS_BY_CATEGORY' });
-    }, []);
+      {categories.map((category, i) => (
+        <div key={i}>
+          
+          <h2>{category.desirable} - {category.undesirable}</h2>
 
-    return (
-        <>
-            <h1>All Questions</h1>
+          <QuestionsByCategory 
+            categoryId={category.id}
+          />
 
-            
-        </>
-    );
+        </div>
+      ))}
+      
+    </>
+  );
 }
 
 export default AllQuestionsPage;
