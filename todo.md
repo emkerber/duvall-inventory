@@ -1,5 +1,11 @@
 # TO DO
 
+## TYPESCRIPT
+
+- [ ] get app working with TS - backend
+- [ ] get app working with TS - frontend
+- [ ] implement interface declarations for all data from SQL
+
 ## ADMIN
 
 ### Admin form to add new questions
