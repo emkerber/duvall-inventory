@@ -1,14 +1,14 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 require('dotenv').config();
-var PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5001;
 // include middleware
-var sessionMiddleware = require('./modules/session-middleware');
-var passport = require('./strategies/user.strategy');
+const sessionMiddleware = require('./modules/session-middleware');
+const passport = require('./strategies/user.strategy');
 // include route files
-var userRouter = require('./routes/user.router');
-var categoryRouter = require('./routes/category.router');
-var questionRouter = require('./routes/question.router');
+const userRouter = require('./routes/user.router');
+const categoryRouter = require('./routes/category.router');
+const questionRouter = require('./routes/question.router');
 // express setup
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,6 +23,6 @@ app.use('/api/user', userRouter);
 app.use('/api/category', categoryRouter);
 app.use('/api/question', questionRouter);
 // define port on which to listen
-app.listen(PORT, function () {
-    console.log("Listening on port: ".concat(PORT));
+app.listen(PORT, () => {
+    console.log(`Listening on port: ${PORT}`);
 });

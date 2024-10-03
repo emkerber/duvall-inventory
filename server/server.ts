@@ -13,14 +13,14 @@ const categoryRouter = require('./routes/category.router');
 const questionRouter = require('./routes/question.router');
 
 interface Req extends Express.Request {
-  user: [];
+  user: { auth_level: number };
   body: { username: string; password: string; };
   logout: () => void;
   isAuthenticated: () => boolean;
 }
 
 interface Res extends Express.Response {
-  send: (arg0: []) => void;
+  send: (arg0: [] | {}) => void;
   sendStatus: (arg0: number) => void;
 }
 

@@ -1,15 +1,15 @@
-var expressCategory = require('express');
-var routerCategory = expressCategory.Router();
-var poolCategory = require('../modules/pool');
-var rejectUnauthenticatedCategory = require('../modules/authentication-middleware').rejectUnauthenticated;
-routerCategory.get('/', rejectUnauthenticatedCategory, function (req, res) {
-    var queryText = 'SELECT * FROM "category" ORDER BY "id" ASC;';
+const expressCategory = require('express');
+const routerCategory = expressCategory.Router();
+const poolCategory = require('../modules/pool');
+const rejectUnauthenticatedCategory = require('../modules/authentication-middleware').rejectUnauthenticated;
+routerCategory.get('/', rejectUnauthenticatedCategory, (req, res) => {
+    const queryText = 'SELECT * FROM "category" ORDER BY "id" ASC;';
     poolCategory
         .query(queryText)
-        .then(function (result) {
+        .then((result) => {
         res.send(result.rows);
     })
-        .catch(function (error) {
+        .catch((error) => {
         console.log('Failed to SELECT from category:', error);
         res.sendStatus(500);
     });

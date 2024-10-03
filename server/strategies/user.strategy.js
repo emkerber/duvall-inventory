@@ -1,19 +1,19 @@
-var passportUserStrategy = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var encryptLibUserStrategy = require('../modules/encryption');
-var poolUserStrategy = require('../modules/pool');
-passportUserStrategy.serializeUser(function (user, done) {
+const passportUserStrategy = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const encryptLibUserStrategy = require('../modules/encryption');
+const poolUserStrategy = require('../modules/pool');
+passportUserStrategy.serializeUser((user, done) => {
     done(null, user.id);
 });
-passportUserStrategy.deserializeUser(function (id, done) {
+passportUserStrategy.deserializeUser((id, done) => {
     poolUserStrategy
         .query('SELECT * FROM "user" WHERE id = $1', [id])
-        .then(function (result) {
+        .then((result) => {
         // Handle Errors
-        var resultArr = result === null || result === void 0 ? void 0 : result.rows;
+        const resultArr = result === null || result === void 0 ? void 0 : result.rows;
         if (Array.isArray(resultArr) && typeof resultArr[0].password === 'string') {
             // user found
-            var user = resultArr[0];
+            const user = resultArr[0];
             delete user.password; // remove password so it doesn't get sent
             // done takes an error (null in this case) and a user
             done(null, user);
@@ -25,7 +25,7 @@ passportUserStrategy.deserializeUser(function (id, done) {
             done(null, null);
         }
     })
-        .catch(function (error) {
+        .catch((error) => {
         console.log('Error with query during deserializing user ', error);
         // done takes an error (we have one) and a user (null in this case)
         // this will result in the server returning a 500 status code
@@ -33,11 +33,11 @@ passportUserStrategy.deserializeUser(function (id, done) {
     });
 });
 // Does actual work of logging in
-passportUserStrategy.use('local', new LocalStrategy(function (username, password, done) {
+passportUserStrategy.use('local', new LocalStrategy((username, password, done) => {
     poolUserStrategy
         .query('SELECT * FROM "user" WHERE username = $1', [username])
-        .then(function (result) {
-        var user = result && result.rows && result.rows[0];
+        .then((result) => {
+        const user = result && result.rows && result.rows[0];
         if (user && encryptLibUserStrategy.comparePassword(password, user.password)) {
             // All good! Passwords match!
             // done takes an error (null in this case) and a user
@@ -50,7 +50,7 @@ passportUserStrategy.use('local', new LocalStrategy(function (username, password
             done(null, null);
         }
     })
-        .catch(function (error) {
+        .catch((error) => {
         console.log('Error with query for user ', error);
         // done takes an error (we have one) and a user (null in this case)
         // this will result in the server returning a 500 status code
