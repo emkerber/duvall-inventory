@@ -8,7 +8,7 @@ routerCategory.get('/', rejectUnauthenticatedCategory, (req: Req, res: Res) => {
   
   poolCategory
     .query(queryText)
-    .then((result: { rows: {}[] }) => {
+    .then((result: { rows: [] }) => {
       res.send(result.rows)
     })
     .catch((error: string) => {

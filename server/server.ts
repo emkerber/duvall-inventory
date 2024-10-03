@@ -15,12 +15,13 @@ const questionRouter = require('./routes/question.router');
 interface Req extends Express.Request {
   user: [];
   body: { username: string; password: string; };
-  logout: () => {};
+  logout: () => void;
+  isAuthenticated: () => boolean;
 }
 
 interface Res extends Express.Response {
-  send: ([]) => {};
-  sendStatus: (code: number) => {};
+  send: (arg0: []) => void;
+  sendStatus: (arg0: number) => void;
 }
 
 // express setup
