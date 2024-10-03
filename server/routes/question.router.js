@@ -1,15 +1,17 @@
-var express = require('express');
-var router = express.Router();
-var pool = require('../modules/pool');
-var rejectUnauthenticated = require('../modules/authentication-middleware').rejectUnauthenticated;
-router.get('/', rejectUnauthenticated, function (req, res) {
+var expressQuestion = require('express');
+var routerQuestion = expressQuestion.Router();
+var poolQuestion = require('../modules/pool');
+var rejectUnauthenticatedQuestion = require('../modules/authentication-middleware').rejectUnauthenticated;
+routerQuestion.get('/', rejectUnauthenticatedQuestion, function (req, res) {
     var queryText = 'SELECT * FROM "question";';
-    pool
+    poolQuestion
         .query(queryText)
-        .then(function (result) { return res.send(result.rows); })
+        .then(function (result) {
+        res.send(result.rows);
+    })
         .catch(function (error) {
         console.log('Failed to SELECT from question:', error);
         res.sendStatus(500);
     });
 });
-module.exports = router;
+module.exports = routerQuestion;

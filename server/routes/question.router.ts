@@ -1,20 +1,20 @@
-const express = require('express');
-const router = express.Router();
-const pool = require('../modules/pool');
-const {
-  rejectUnauthenticated,
-} = require('../modules/authentication-middleware');
+const expressQuestion = require('express');
+const routerQuestion = expressQuestion.Router();
+const poolQuestion = require('../modules/pool');
+const rejectUnauthenticatedQuestion = require('../modules/authentication-middleware').rejectUnauthenticated;
 
-router.get('/', rejectUnauthenticated, (req, res) => {
+routerQuestion.get('/', rejectUnauthenticatedQuestion, (req: Req, res: Res) => {
   const queryText = 'SELECT * FROM "question";';
 
-  pool
+  poolQuestion
     .query(queryText)
-    .then(result => res.send(result.rows))
-    .catch(error => {
+    .then((result: { rows: [] }) => {
+      res.send(result.rows)
+    })
+    .catch((error: string) => {
       console.log('Failed to SELECT from question:', error);
       res.sendStatus(500);
     });
 });
 
-module.exports = router;
+module.exports = routerQuestion;
