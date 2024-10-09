@@ -1,5 +1,6 @@
-import { combineReducers } from 'redux';
-const questions = (state = [], action) => {
+import { AnyAction, combineReducers } from 'redux';
+
+const questions = (state = [], action: AnyAction) => {
     switch (action.type) {
         case 'SET_QUESTIONS':
             return action.payload;
@@ -8,7 +9,8 @@ const questions = (state = [], action) => {
         default:
             return state;
     }
-};
+}
+
 export default combineReducers({
     // admin:
     questions,

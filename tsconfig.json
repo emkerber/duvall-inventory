@@ -3,12 +3,12 @@
         // "outDir": "./build/",
         "strictNullChecks": true,
         "module": "preserve", // supports both es6 and node, so both imports and requires 
+        // "moduleResolution": "node",
         "jsx": "preserve",
         "target": "es6",
-        "allowJs": true
-    },
-    "include": [
-        "./server/",
-        "./src/"
-    ]
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true
+    }
 }
