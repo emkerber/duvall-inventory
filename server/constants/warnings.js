@@ -14,10 +14,8 @@ If this warning is showing on Heroku,
 add or change your SERVER_SESSION_SECRET environment variable!
 
 ----------------------------`;
-
 const exampleBadSecret = 'superDuperSecret';
-
 module.exports = {
-  badSecret,
-  exampleBadSecret,
+    badSecret,
+    exampleBadSecret,
 };

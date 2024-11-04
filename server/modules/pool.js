@@ -1,6 +1,5 @@
 const pg = require('pg');
 let pool;
-
 // for deployed app
 if (process.env.DATABASE_URL) {
     pool = new pg.Pool({
@@ -18,5 +17,4 @@ else {
         database: 'duvall-inventory',
     });
 }
-
 module.exports = pool;

@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-
 const categories = (state = [], action) => {
     switch (action.type) {
         case 'SET_CATEGORIES':
@@ -9,8 +8,7 @@ const categories = (state = [], action) => {
         default:
             return state;
     }
-}
-
+};
 export default combineReducers({
     // admin:
     categories,

@@ -1,14 +1,10 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
-
 function Nav() {
-  const user = useSelector((store) => store.user);
-
-  return (
-    <div className="nav">
+    const user = useSelector((store) => store.user);
+    return (<div className="nav">
 
       {/* clickable nav title text */}
       <Link to="/home">
@@ -17,17 +13,14 @@ function Nav() {
 
       <div>
         {/* If no user is logged in, show these links */}
-        {!user.id && (
-          <>
+        {!user.id && (<>
             <Link className="navLink" to="/login">
               Login / Register
             </Link>
-          </>
-        )}
+          </>)}
 
         {/* If an admin user is logged in, show these links */}
-        {user.auth_level === 1 && (
-          <>
+        {user.auth_level === 1 && (<>
             <Link className="navLink" to="/admin/all">
               All Questions
             </Link>
@@ -35,17 +28,14 @@ function Nav() {
             <Link className="navLink" to="/admin/new">
               New Question
             </Link>
-          </>
-        )}
+          </>)}
 
         {/* If a basic user is logged in, show these links */}
-        {user.auth_level === 0 && (
-          <>
+        {user.auth_level === 0 && (<>
             <Link className="navLink" to="/home">
               Home
             </Link>
-          </>
-        )}
+          </>)}
 
         {/* Everyone can see About */}
         <Link className="navLink" to="/about">
@@ -53,15 +43,11 @@ function Nav() {
         </Link>
 
         {/* If any user is logged in, show these links */}
-        {user.id && (
-          <>
-            <LogOutButton className="navLink" />
-          </>
-        )}
+        {user.id && (<>
+            <LogOutButton className="navLink"/>
+          </>)}
 
       </div>
-    </div>
-  );
+    </div>);
 }
-
 export default Nav;

@@ -1,4 +1,12 @@
+--jsx preserve --esModuleInterop true --allowSyntheticDefaultImports true --module preserve --target es6
+
 # TO DO
+
+## TYPESCRIPT
+
+- [x] get app working with TS - backend
+- [x] get app working with TS - frontend
+- [ ] implement interface declarations for all data from SQL
 
 ## ADMIN
 

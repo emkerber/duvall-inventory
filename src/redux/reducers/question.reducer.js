@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-
 const questions = (state = [], action) => {
     switch (action.type) {
         case 'SET_QUESTIONS':
@@ -9,8 +8,7 @@ const questions = (state = [], action) => {
         default:
             return state;
     }
-}
-
+};
 export default combineReducers({
     // admin:
     questions,
