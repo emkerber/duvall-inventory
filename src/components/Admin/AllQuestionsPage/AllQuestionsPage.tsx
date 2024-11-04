@@ -6,7 +6,14 @@ import './AllQuestionsPage.css';
 function AllQuestionsPage() {
   const dispatch = useDispatch();
 
-  const categories = useSelector((store: { category: { categories: {}[] }}) => store.category.categories);
+  const categories = useSelector((
+    store: 
+    {
+      category:
+      {
+        categories: {}[]
+      }
+    }) => store.category.categories);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_CATEGORIES' });
@@ -17,17 +24,27 @@ function AllQuestionsPage() {
     <>
       <h1>All Questions</h1>
 
-      {categories.map((category: { id: number, desirable: string, undesirable: string }, i: number) => (
-        <div key={i}>
-          
-          <h2>{category.desirable} - {category.undesirable}</h2>
+      {categories.map(
+        (
+          category: 
+          {
+            id: number,
+            desirable: string,
+            undesirable: string
+          },
+          i: number
+        ) => (
+          <div key={i}>
+            
+            <h2>{category.desirable} - {category.undesirable}</h2>
 
-          <QuestionsByCategory 
-            categoryId={category.id}
-          />
+            <QuestionsByCategory 
+              categoryId={category.id}
+            />
 
-        </div>
-      ))}
+          </div>
+        )
+      )}
       
     </>
   );
