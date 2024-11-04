@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        // "outDir": "./build/",
+        "outDir": "./build/",
         "strictNullChecks": true,
         "module": "preserve", // supports both es6 and node, so both imports and requires 
         // "moduleResolution": "node",
@@ -10,5 +10,8 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "skipLibCheck": true
-    }
+    },
+    "exclude": [
+        "./build/**/*"
+    ]
 }
