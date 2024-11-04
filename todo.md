@@ -5,7 +5,7 @@
 ## TYPESCRIPT
 
 - [x] get app working with TS - backend
-- [ ] get app working with TS - frontend
+- [x] get app working with TS - frontend
 - [ ] implement interface declarations for all data from SQL
 
 ## ADMIN

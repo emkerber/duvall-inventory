@@ -1,19 +1,15 @@
 import { useSelector } from 'react-redux';
 
 function QuestionsByCategory(
-  props:
-  {
+  props: {
     categoryId: string
   }
 ) {
   
   const questions = useSelector((
-    store: 
-    {
-      question: 
-      {
-        questions: 
-        {
+    store: {
+      question: {
+        questions: {
           category_id: string,
           verbiage: string,
           option_one: string,
@@ -26,7 +22,8 @@ function QuestionsByCategory(
           weight_four: string
         }[]
       }
-    }) => store.question.questions);
+    }
+  ) => store.question.questions);
 
   return (
     <>
